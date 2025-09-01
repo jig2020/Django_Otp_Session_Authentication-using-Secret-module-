@@ -1,0 +1,23 @@
+{{course}}
+<ul>
+    {% for x in Allcourses.set.all %}
+        <li>
+            <h2>{{ x.coursename }}</h2>
+            <p>{{ x.description }}</p>
+            <p>Duration: {{ x.duration }} weeks</p>
+            <p>Price: ${{ x.price }}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if error_message %}<p><strong> {{ error_message }}</strong></p>
+{% endif %}
+<form action= "{% url 'Website1:yourchoice' course.id %}"
+    method="post">
+    {% csrf_token %}
+    {% for choice in course.coursedetails.set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.coursetype }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>

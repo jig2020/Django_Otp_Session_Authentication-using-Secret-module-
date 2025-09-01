@@ -1,0 +1,10 @@
+<h1>Welcome to this Wedsite1</h1>
+<img src="/static/Website1/images/edureka.png" alt="Edureka Logo" style="width: 200px; height: 100px;">
+<h2>Courses</h2>
+<ol>
+    {% for x in ac %}
+    <div class="course">
+        <a href="/Website1/{{x_id}}/">{{x.coursename}}</a>
+    </div>
+    {% endfor %}
+</ol>
